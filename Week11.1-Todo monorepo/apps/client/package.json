@@ -1,0 +1,23 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "ui": "*",
+    "db": "*"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/mongoose": "^5.11.97",
+    "axios": "^1.4.0",
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^7.4.5",
+    "next": "^13.4.19"
+  }
+}
