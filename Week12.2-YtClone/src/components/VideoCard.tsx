@@ -1,21 +1,22 @@
-export function VideoCard(){
+export function VideoCard(props: any){
     return(
-        <div>
-             <img src="https://picsum.photos/400/200" className="rounded-md" />
+        <div className="p-3">
+             <img src={props.thumbnail} className="rounded-md" />
+             
              <div className="grid grid-cols-12 pt-2">
                 <div className="col-span-1">
-                    <img className={"rounded-full w-12 h-12"} src="https://picsum.photos/30/30" alt="" />
+                    <img className={"rounded-full w-12 h-12"} src={props.channelIcon} alt="" />
                 </div>
 
                 <div className="col-span-11 ">
                     <div>
-                        Jawan: Chaleya (Hindi) | Shahrukh Khan
+                        {props.title}
                     </div>
                     <div className="col-span-11 text-gray-400 text-base">
-                        Harkirat Singh
+                        {props.author}
                     </div>
                     <div className="col-span-11 text-gray-400 text-base">
-                        46M views | 5 months ago
+                        {props.views}{props.timestamp}
                     </div>
                 </div>
              </div>
