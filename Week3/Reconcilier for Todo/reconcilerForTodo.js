@@ -5,6 +5,7 @@ function createDomElements() {
 
   var currentChildren = Array.from(parentElement.children);
 
+  //just counting
   let added = 0, deleted = 0, updated = 0;
 
   // Now, we'll compare our new vDOM to our actual DOM
@@ -17,9 +18,11 @@ function createDomElements() {
 
     if (existingChild) {
       updated++;
+
       // If it exists, update it
       existingChild.children[0].innerHTML = item.title;
       existingChild.children[1].innerHTML = item.description;
+
       // Remove it from the currentChildren array
       currentChildren = currentChildren.filter(function(child) {
         return child !== existingChild;

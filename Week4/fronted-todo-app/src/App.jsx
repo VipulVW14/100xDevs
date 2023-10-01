@@ -1,10 +1,10 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 function useTodos(){
   const [todos, setTodo]=useState([])
 
-  React.useEffect(()=>{
+  useEffect(()=>{
     fetch("http://localhost:3000/todos").then((response)=>{
       response.json().then((data)=>{
         console.log(data);

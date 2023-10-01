@@ -12,7 +12,12 @@ const SECRET= 'S3cReT';
 const userSchema= new mongoose.Schema({
   username: {type:String},
   password: String,
-  purchasedCourses: [{type: mongoose.Schema.Types.ObjectId, ref: 'Course'}]
+  purchasedCourses: [ 
+    {
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'Course'
+    },
+  ]
 })
 
 const adminSchema= new mongoose.Schema({
@@ -34,8 +39,10 @@ const Course= mongoose.model('Course', courseSchema);
 
 authenticateJwt= (req,res,next)=>{
   const authHeader= req.headers.authorization;
+  
   if(authHeader){
     const token= authHeader.split(' ')[1];
+    
     jwt.verify(token, SECRET, (err,user)=>{
       if(err){
         return res.sendStatus(403);
@@ -50,15 +57,19 @@ authenticateJwt= (req,res,next)=>{
 
 mongoose.connect('mongodb+srv://vipulwasnik0:Vipul123@cluster0.4foqutn.mongodb.net/'); 
 
+//Admin routes 
 app.post('/admin/signup', (req,res)=>{
   const {username,password}= req.body;
+
   Admin.findOne({username}).then((admin)=>{
     if(admin){
       res.status(403).json({message: 'Admin already exists'});
     }else{
-      const obj= {username: username,password: password};
+      const obj= {username: username, password: password};
+
       const newAdmin= new Admin(obj);
       newAdmin.save();
+      
       const token= jwt.sign({username, role: 'admin'}, SECRET, {expiresIn: '1h'});
       res.json({message: 'Admin created successfully', token});
     }
