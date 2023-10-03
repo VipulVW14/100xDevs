@@ -1,4 +1,5 @@
 import mongoose, { mongo } from "mongoose";
+
 // Define mongoose schemas
 const todoSchema = new mongoose.Schema({
     title: {type: String},

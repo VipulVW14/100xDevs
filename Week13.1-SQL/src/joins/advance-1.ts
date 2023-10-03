@@ -14,7 +14,6 @@ async function getUserAndTodosWithJoin(userId: number) {
 
     const res = await client.query(joinQuery, [userId]);
     const results = res.rows;
-
     console.log("User and Todos:", results);
 }
 

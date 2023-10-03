@@ -1,17 +1,22 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { httpBatchLink } from '@trpc/client';
-import React, { useState } from 'react';
 import { trpc } from './utils/trpc';
+import React, { useState } from 'react';
 
 export default function App() {
+
   const [queryClient] = useState(() => new QueryClient({
+
     defaultOptions: {
       queries: {
         refetchOnWindowFocus: false,
       }
     }
+
   }));
+
   const [trpcClient] = useState(() =>
+
     trpc.createClient({
       links: [
         httpBatchLink({
@@ -25,6 +30,7 @@ export default function App() {
         }),
       ],
     }),
+
   );
 
   return (
@@ -50,37 +56,49 @@ export function IndexPage() {
 
   return (
     <div>
+
       <p>Hi {userQuery.data?.email}</p>
-      {todoQuery.data?.map(x => <div>{x.title} - {x.description}</div>)}
-      <button disabled={todoMutate.isLoading} onClick={() => todoMutate.mutate({ title: 'Frodo', description: "go to gym" })}>
+
+      {todoQuery.data?.map(x => <div>{x.title} - {x.description}</div> )}
+      
+      <button disabled={todoMutate.isLoading} 
+              onClick={() => todoMutate.mutate({ title: 'Frodo', description: "go to gym" })}>
         Create Todo
       </button>
+
     </div>
   );
 }
 
 function Signup() {
+
   const userSignupMutate = trpc.user.signup.useMutation({
+
     onSuccess: (data) => {
       let token = data.token;
       localStorage.setItem("token", token);
       window.location = "/";
     }
+
   });
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   return <div>
-    Signup page
+    Signup Page
     Username
-    <input type="text" onChange={(e) => setUsername(e.target.value)}></input>
-    password
-    <input type="text" onChange={(e) => setPassword(e.target.value)}></input>
+    <input type="text" onChange={(e) => setUsername(e.target.value)}/> 
+    
+    Password
+    <input type="text" onChange={(e) => setPassword(e.target.value)}/> 
+
     <button onClick={async () => {
       userSignupMutate.mutate({
         username,
         password
       })
     }}>Sign up</button>
+    
   </div>
 }

@@ -1,5 +1,7 @@
 import { getClient } from "../utils";
 
+// Get all todos for a give user
+// This shouldnt return a row if no todos exist for the user 
 async function getAllTodosWithUserDetails() {
     const client = await getClient();
 

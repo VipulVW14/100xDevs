@@ -1,16 +1,16 @@
 import { publicProcedure, router } from './trpc';
 import { z } from 'zod';
 import { createHTTPServer } from '@trpc/server/adapters/standalone';
-
 let app;
 
 const appRouter = router({
+
     signUp: publicProcedure
         .input(z.object({
             email: z.string(),
             password: z.string()
         }))
-        .mutation(async (opts) => {
+        .mutation(async (opts:any) => {
             // context
             let email = opts.input.email;
             let password = opts.input.password;
@@ -23,6 +23,7 @@ const appRouter = router({
                 token
             }
         }),
+
     createTodo: publicProcedure
         .input(z.object({
             title: z.string()
@@ -32,24 +33,27 @@ const appRouter = router({
             return {
                 id: "1"
             }
-        })
+        }),
 
+    
 });
 
 const server = createHTTPServer({
   router: appRouter,
-  createContext(opts) {
+
+  createContext(opts:any) {
     let authHeader = opts.req.headers["authorization"];
     console.log(authHeader);
+    
     //jwt.verify()
     return {
         username: "123"
     }
   }
+
 });
    
 server.listen(3000);
-
 export type AppRouter = typeof appRouter;
 
 

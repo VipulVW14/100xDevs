@@ -4,7 +4,9 @@ const chain = Chain("http://localhost:4000/graphql");
 
 async function send() {
     try {
+        
         const response = await chain("mutation")({
+          
             createUser: [{
                 input: {
                     email: "harkirat1@gmail.com",
@@ -16,10 +18,10 @@ async function send() {
                 email: true
             }]
         })
-        console.log(response)   
+        console.log(response) 
+
     }  catch(e) {
         console.log(e);
     }
 }
-
 send();

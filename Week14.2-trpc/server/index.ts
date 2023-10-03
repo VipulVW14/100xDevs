@@ -15,7 +15,6 @@ const appRouter = router({
     user: userRouter,
     todo: todoRouter,
 });
-
  
 // Export type router type signature,
 // NOT the router itself.
@@ -23,13 +22,16 @@ export type AppRouter = typeof appRouter;
 
 const server = createHTTPServer({
     router: appRouter,
+
     middleware: cors(),
+
     createContext(opts) {
         let authHeader = opts.req.headers["authorization"];
 
         if (authHeader) {
             const token = authHeader.split(' ')[1];
             console.log(token);
+            
             return new Promise<{db: {Todo: typeof Todo, User: typeof User}, userId?: string}>((resolve) => {
                 jwt.verify(token, SECRET, (err, user) => {
                     if (user) {

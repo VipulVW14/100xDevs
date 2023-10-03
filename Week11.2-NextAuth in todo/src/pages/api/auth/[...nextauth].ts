@@ -22,6 +22,7 @@ export const authOptions = {
                 username: { label: "Username", type: "text", placeholder: "jsmith" },
                 password: { label: "Password", type: "password" }
             },
+
             async authorize(credentials, req) {
                 await ensureDbConnected()
                 if (!credentials) {
@@ -29,14 +30,16 @@ export const authOptions = {
                 }
                 const username = credentials.username;
                 const password = credentials.password;
+                
                 // Add logic here to look up the user from the credentials supplied
                 const admin = await Admin.findOne({ username });
-
                 if (!admin) {
                     const obj = { username: username, password: password };
                     const newAdmin = new Admin(obj);
+                   
                     let adminDb = await newAdmin.save();
                     console.log(adminDb);
+                    
                     return {
                         id: adminDb._id,
                         email: adminDb.username,

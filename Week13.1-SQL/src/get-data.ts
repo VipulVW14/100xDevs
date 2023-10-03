@@ -37,8 +37,5 @@ async function getTodosForUser(userId: number) {
 }
 
 getUsers();
-
 getUserFromEmail("john.do11e@gmail2.com")
-
-const userIdToFetch = 1;
-getTodosForUser(userIdToFetch);
+getTodosForUser(1);

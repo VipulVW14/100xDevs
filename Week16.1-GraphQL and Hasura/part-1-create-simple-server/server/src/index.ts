@@ -4,6 +4,7 @@ import { buildSchema } from 'graphql';
 import * as path from "path";
 
 const fs = require('fs');
+
 const schemaString = fs.readFileSync(path.join(__dirname, './schema.gql'), 'utf8');
 const schema = buildSchema(schemaString);
 
@@ -22,8 +23,10 @@ const root = {
     }
     return null;
   },
+
   createUser: ({ input }, req) => {
     console.log(req.authHeader);
+
     // mongoose/prisma logic to store the user
     return { id: '2', ...input };
   }
@@ -34,6 +37,7 @@ const app = express();
 app.get("/healthcheck", (req: any, res: any) => {
   res.json({"msg": "hi"});
 })
+
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   rootValue: root,
