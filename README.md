@@ -1,7 +1,6 @@
 # 100xDevs
-Code written in a 20 week extensive Full Stack course by 100xDevs
-
 Techonologies Covered: 
+
 React
 Express
 MongoDb
