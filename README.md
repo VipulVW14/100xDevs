@@ -1,5 +1,5 @@
 # 100xDevs
-Techonologies Covered: 
+Technologies/Topics Covered: 
 
 React,
 Express,
