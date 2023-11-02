@@ -14,6 +14,7 @@ const authMiddleware = (req, res, next) => {
 }
 
 const root = {
+
   getUser: ({ id }, req) => {
     console.log(req.authHeader);
     
