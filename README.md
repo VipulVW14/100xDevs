@@ -1,5 +1,5 @@
 # 100xDevs
-Technologies/Topics Covered: 
+Technologies Covered: 
 
 React,
 Express,
@@ -13,10 +13,10 @@ WebSocket,WebRTC
 Recoil
 
 TS,
-useSWR,Generics, Zod
+useSWR, Generics, Zod
 
 Deploying npm packages,
-CI/CD, certbot
+CI/CD, nginx, certbot
 
 Nextjs, nextAuth,
 Monorepo, Turborepo
@@ -25,12 +25,12 @@ Open API Spec, decorators, tsoa, SwaggerUI
 
 TailwindCSS
 
-SQL,
+SQL, PostgreSQL,
 Prisma,
 Trpc
 
-Docker, dockercompose
+Docker, Docker Compose 
 
-GraphQL
+GraphQL, Hasura, Zeus
 
 Redis
