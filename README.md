@@ -5,8 +5,7 @@ React,
 Express,
 MongoDb
 
-Reconciler
-
+<!-- Reconciler -->
 Fetch, Axios
 
 WebSocket,WebRTC
@@ -34,3 +33,4 @@ Docker, dockercompose
 
 GraphQL
 
+Redis
